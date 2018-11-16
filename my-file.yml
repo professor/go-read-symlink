@@ -1,0 +1,24 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: pksrelengci/ci-runner
+
+inputs:
+- name: pks-lock
+- name: pks-cli
+- name: git-pks-releng-ci
+- name: git-pks-ci
+- name: git-sink-resources
+- name: kubectl
+
+params:
+  DEBUG:
+  PKS_CLI_USERNAME:
+  PKS_CLI_PASSWORD:
+  ENV_LOCK_FILE:
+
+run:
+  path: git-pks-releng-ci/scripts/sink-resource-crd-tests.sh
